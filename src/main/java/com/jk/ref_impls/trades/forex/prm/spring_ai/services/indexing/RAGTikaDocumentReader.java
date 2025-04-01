@@ -1,4 +1,4 @@
-package com.jk.ref_impls.trades.forex.prm.spring_ai.indexing;
+package com.jk.ref_impls.trades.forex.prm.spring_ai.services.indexing;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class RAGTikaDocumentReader {
 
-    public List<Document> readFromt(Resource resource) {
+    public List<Document> readFrom(Resource resource) {
         var tikaDocumentReader = new TikaDocumentReader(resource);
         return tikaDocumentReader.read();
     }
