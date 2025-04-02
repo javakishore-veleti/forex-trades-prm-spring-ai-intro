@@ -1,6 +1,7 @@
 package com.jk.ref_impls.trades.forex.prm.spring_ai.configuration;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.transformer.splitter.TextSplitter;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ public class AIConfig {
 
     @Bean(name = "openAIChatClient")
     ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-        return chatClientBuilder.build();
+        return chatClientBuilder.defaultAdvisors(new SimpleLoggerAdvisor()).build();
     }
 
     @Bean

@@ -56,14 +56,14 @@ public class RAGBasicIndexingService {
         return splitDocuments;
     }
 
-    public List<Document> indexDocumentFromFileSystem(BasicIndexingRequest request) throws Exception {
+    public List<Document> indexDocumentFromFileSystem(BasicIndexingRequest request) {
         var resource = new FileSystemResource(request.sourcePath());
         return processDocument(resource, request.outputFileName(), request.appendFileExists(), request.keywords());
     }
 
-    public List<Document> indexDocumentFromURL(String sourcePath, String outputFileName, boolean appendFileExists, List<String> keywords) throws Exception {
-        var resource = new UrlResource(sourcePath);
-        return processDocument(resource, outputFileName, appendFileExists, keywords);
+    public List<Document> indexDocumentFromURL(BasicIndexingRequest request) throws Exception {
+        var resource = new UrlResource(request.url());
+        return processDocument(resource, request.outputFileName(), request.appendFileExists(), request.keywords());
     }
 
 }
